@@ -12,7 +12,6 @@ const createHTTPServer = async (db) => {
     app.use(cors());
     const DocumentController = require('../../interface_adapters/controllers/DocumentController');
     const AppraisalController = require('../../interface_adapters/controllers/AppraisalController');
-    const KmsController = require('../../interface_adapters/controllers/K')
     DocumentController.init(db);
     AppraisalController.init(db);
     const ipfs = ipfsApi({

@@ -16,4 +16,4 @@ class KmsRepository {
     }
 }
 
-module.exports = KmsRepository;
+module.exports = AppraisalRepository;

@@ -1,4 +1,4 @@
-class KmsRepository {
+class AppraisalRepository {
     constructor(repo) {
         this.repository = repo;
     }
@@ -10,10 +10,10 @@ class KmsRepository {
     get(documentId) {
         return this.repository.get(documentId);
     }
-
-    getKmsDocument() {
-        return this.repository.getKmsDocument();
+    getAll() {
+        return this.repository.getAll();
     }
+
 }
 
-module.exports = KmsRepository;
+module.exports = AppraisalRepository;

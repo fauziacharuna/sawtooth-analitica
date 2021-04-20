@@ -3,15 +3,13 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const ipfsApi = require('ipfs-api')
 const multer = require('multer')
+const KmsDocumentController = require('../../interface_adapters/controllers/KmsDocumentController')
 
 const storage = multer.memoryStorage()
 const upload = multer({storage: storage})
 
 const createHTTPServer = async (db) => {
     const app = express();
-    app.get('/home', function (req, res) {
-        res.send('hello world')
-    })
     app.use(cors());
     const DocumentController = require('../../interface_adapters/controllers/DocumentController');
     const AppraisalController = require('../../interface_adapters/controllers/AppraisalController');
@@ -30,7 +28,9 @@ const createHTTPServer = async (db) => {
     app.post('/add', DocumentController.createDokumen);
     app.get('/appraisal/list', AppraisalController.listAppraisal);
     // app.get('/home', )
-  
+    app.get('/home', function (req, res) {
+        res.send('hello world')
+      })
     app.post('/appraisal', AppraisalController.createAppraisal);
     app.post('/upload', upload.single('image'), (req, res) => {
         ipfs.files.add(req.file.buffer, function (err, file) {

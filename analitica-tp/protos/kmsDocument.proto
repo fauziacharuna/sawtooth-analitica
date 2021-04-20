@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+
+message KmsDocument {
+  string    industriProyek=1;
+  string    projectManagement=2;
+  string    engineering=3;
+  string    procurement=4;
+  string    vendor=5;
+  string    materialControl=6;
+  string    fabricationConstruction=7;
+  string    commisioning=8;
+}
+
+message KmsDocumentContainer {
+  repeated KmsDocument entries = 1;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Location {
+  float long = 1;
+  float lat = 2;
+}
+
+message KmsDocument {
+  string industriProyek,
+  string projectManagement,
+  string engineering,
+  string procurement,
+  string vendor,
+  string materialControl,
+  string fabricationConstruction,
+  string commisioning; 
+}
+
+message KmsDocumentContainer {
+  repeated Document entries = 1;
+}

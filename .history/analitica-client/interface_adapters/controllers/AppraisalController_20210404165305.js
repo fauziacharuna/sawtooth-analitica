@@ -3,8 +3,6 @@ const { check, param, query, validationResult } = require('express-validator');
 const CreateAppraisal = require('../../application_business_rules/use_cases/CreateAppraisal');
 const ListAppraisal = require('../../application_business_rules/use_cases/ListAppraisal');
 const AppraisalRepository = require('../../application_business_rules/repositories/AppraisalRepository');
-const DocumentRepository = require('../../application_business_rules/repositories/DocumentRepository');
-
 const AnaliticaClient = require('../storage/Blockchain');
 const blockchain = new AppraisalRepository(new AnaliticaClient());
 let appraisalRepo;

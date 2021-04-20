@@ -1,8 +1,14 @@
 const { check, param, query, validationResult } = require('express-validator');
+
+// const CreateDocument = require('../../application_business_rules/use_cases/CreateDocument');
+// const ListDocument = require('../../application_business_rules/use_cases/ListDocument');
+// const GetDocument = require('../../application_business_rules/use_cases/GetDocument');
+// const GetPembanding = require('../../application_business_rules/use_cases/GetPembanding');
 const CreateKmsDocument = require('../../application_business_rules/use_cases/CreateKmsDocument');
+
 const KmsDocumentRepository = require('../../application_business_rules/repositories/KmsRepository');
+
 const AnaliticaClient = require('../storage/Blockchain');
-const ListKmsDocument = require('../../application_business_rules/use_cases/ListKmsDocument');
 const blockchain = new KmsDocumentRepository(new AnaliticaClient());
 // const blockchain = new DocumentRepository(new AnaliticaClient());
 let kmsDocumentRepo;
@@ -38,7 +44,7 @@ module.exports = {
     //     return res.status(200).json(docs);
     // }
     listKmsDokumen: async (req, res, next) => {
-        const docs = await ListKmsDocument(kmsDocumentRepo);
+        const docs = await ListKmsDokumen(kmsDocumentRepo);
         return res.status(200).json(docs);
     }
 }

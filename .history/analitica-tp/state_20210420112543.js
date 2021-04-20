@@ -53,10 +53,11 @@ class AnaliticaState {
         }else if(type == 'kmsdocument'){
             return this.loadProtos('kmsDocument.proto', ['KmsDocument' ])
             .then(protos => {
-                var payload = protos['KmsDocument'].create(data)
+                data.koordinat = protos['Location'].create(data.koordinat);
+                data.adjustment = protos['Adjustment'].create(data.adjustment);
+                var payload = protos['Appraisal'].create(data)
                 console.log(payload);
-                let encoded = protos['KmsDocument'].encode(payload).finish()
-                console.log(encoded);
+                let encoded = protos['Appraisal'].encode(payload).finish()
                 stateEntriesSend[address] = encoded;
             })
         }
@@ -86,17 +87,7 @@ class AnaliticaState {
                         console.log(protos['Appraisal'].decode(this.stateEntries[address]));
                     })
                 })
-        } else if (type == 'kmsdocument') {
-            return this.loadProtos('kmsDocuments.proto', ['KmsDocument'])
-                .then(protos => {
-                    console.log(address);
-                    return  this.context.getState([address], this.timeout).then((stateEntries) => {
-                        Object.assign(this.stateEntries, stateEntries);
-                        console.log(protos['KmsDocument'].decode(this.stateEntries[address]));
-                    })
-                })
-            }
-        
+        }
     }
 }
 

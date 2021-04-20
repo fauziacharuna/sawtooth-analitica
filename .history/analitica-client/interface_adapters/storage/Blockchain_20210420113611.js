@@ -9,7 +9,7 @@ const {TextEncoder, TextDecoder} = require('text-encoding/lib/encoding')
 
 const FAMILY_NAME = 'analitica'
 const FAMILY_VERSION = '1.0'
-const PREFIX = '22'
+const PREFIX = '00'
 
 const hash = (v) => createHash('sha512').update(v).digest('hex');
 

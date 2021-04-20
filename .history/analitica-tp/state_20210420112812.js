@@ -86,7 +86,7 @@ class AnaliticaState {
                         console.log(protos['Appraisal'].decode(this.stateEntries[address]));
                     })
                 })
-        } else if (type == 'kmsdocument') {
+        }else if (type == 'kmsdocument') {
             return this.loadProtos('kmsDocuments.proto', ['KmsDocument'])
                 .then(protos => {
                     console.log(address);
@@ -96,7 +96,6 @@ class AnaliticaState {
                     })
                 })
             }
-        
     }
 }
 

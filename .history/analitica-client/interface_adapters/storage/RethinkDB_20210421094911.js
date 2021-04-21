@@ -1,6 +1,5 @@
 const Document = require('../../enterprise_business_rules/entities/Document');
 const Appraisal = require('../../enterprise_business_rules/entities/Appraisal');
-const KmsDocument = require('../../enterprise_business_rules/entities/KmsDocument');
 
 class RethinkDB {
     constructor(connection, model) {
@@ -148,21 +147,35 @@ class RethinkDB {
         }
     }
 
-    async getAllKms() {
+    async getAll() {
         try {
             let docs = await this.model.table('kmsDocuments').run(this.con);
             docs = await docs.toArray();
             console.log(docs);
-            return docs.map(doc => new KmsDocument(
+            return docs.map(doc => new Document(
                 doc.id,
-                doc.industriProyek,
-                doc.projectManagement,
-                doc.engineering,
-                doc.procurement,
-                doc.vendor,
-                doc.materialControl,
-                doc.fabricationConstruction,
-                doc.commisioning
+                doc.legalitas,
+                doc.jenisLegalitas,
+                doc.nama,
+                doc.telepon,
+                doc.tahun,
+                doc.tahunRenovasi,
+                doc.hubungan,
+                doc.jenisAset,
+                doc.alamatAset,
+                doc.luasTanah,
+                doc.luasBangunan,
+                doc.bentukTanah,
+                doc.lebarJalan,
+                doc.frontage,
+                doc.letakTanah,
+                doc.elevasi,
+                doc.daerahBanjir,
+                doc.RCNterdepresiasi,
+                doc.nilaiTanah,
+                doc.koordinat,
+                doc.gambarAset,
+                doc.createdAt
             ));
         }
         catch(err) {

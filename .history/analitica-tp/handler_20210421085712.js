@@ -13,19 +13,15 @@ class AnaliticaHandler extends TransactionHandler {
         let payload = cbor.decode(transactionProcessRequest.payload);
         let state = new AnaliticaState(context);
 
-        if (payload.action === 'get') {
-            if(payload.type === 'appraisal'){
-                return state.getValue(payload.type, payload.data.legalitas)
-            }else if(payload.type === 'kmsDocument'){
-                return state.getValue(payload.type, payload.data.industriProyek , payload.data)
-            }
-        } else  if (payload.action === 'set') {
-            if(payload.type==='appraisal'){
-                return state.setValue(payload.type, payload.data.legalitas, payload.data)
-            }
-            else if(payload.type==='kmsDocument'){
-                return state.setValue(payload.type, payload.data.industriProyek , payload.data)
-            }
+        if (payload.type === 'appraisal') {
+            return state.getValue(payload.type, payload.data.legalitas)
+        }
+            else  if (payload.type === 'kmsDocument') {
+            return state.getValue(payload.type, payload.data.industriProyek , payload.data)
+        } else  if (payload.type === 'appraisal') {
+            return state.setValue(payload.type, payload.data.legalitas, payload.data)
+        } else  if (payload.type === 'kmsDocument') {
+            return state.setValue(payload.type, payload.data.industriProyek , payload.data)
         } else {
             throw  new InvalidTransaction(
             `Action must be set, get, or take not ${payload.action}`

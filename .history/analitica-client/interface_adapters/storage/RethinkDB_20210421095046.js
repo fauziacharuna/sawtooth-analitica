@@ -1,6 +1,5 @@
 const Document = require('../../enterprise_business_rules/entities/Document');
 const Appraisal = require('../../enterprise_business_rules/entities/Appraisal');
-const KmsDocument = require('../../enterprise_business_rules/entities/KmsDocument');
 
 class RethinkDB {
     constructor(connection, model) {
@@ -148,12 +147,12 @@ class RethinkDB {
         }
     }
 
-    async getAllKms() {
+    async getAll() {
         try {
             let docs = await this.model.table('kmsDocuments').run(this.con);
             docs = await docs.toArray();
             console.log(docs);
-            return docs.map(doc => new KmsDocument(
+            return docs.map(doc => new Document(
                 doc.id,
                 doc.industriProyek,
                 doc.projectManagement,

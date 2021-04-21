@@ -148,7 +148,7 @@ class RethinkDB {
         }
     }
 
-    async getAllKms() {
+    async getAll() {
         try {
             let docs = await this.model.table('kmsDocuments').run(this.con);
             docs = await docs.toArray();

@@ -16,14 +16,18 @@ class AnaliticaHandler extends TransactionHandler {
         if (payload.action === 'get') {
             if(payload.type === 'appraisal'){
                 return state.getValue(payload.type, payload.data.legalitas)
-            }else if(payload.type === 'kmsDocument'){
-                return state.getValue(payload.type, payload.data.industriProyek , payload.data)
             }
+        }
+            else  if (payload.action === 'get') {
+                if(payload.type === 'kmsDocument'){
+                    return state.getValue(payload.type, payload.data.industriProyek , payload.data)
+                }
         } else  if (payload.action === 'set') {
             if(payload.type==='appraisal'){
                 return state.setValue(payload.type, payload.data.legalitas, payload.data)
             }
-            else if(payload.type==='kmsDocument'){
+        } else  if (payload.action === 'set') {
+            if(payload.type==='kmsDocument'){
                 return state.setValue(payload.type, payload.data.industriProyek , payload.data)
             }
         } else {

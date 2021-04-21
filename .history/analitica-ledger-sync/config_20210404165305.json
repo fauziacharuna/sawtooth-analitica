@@ -22,13 +22,6 @@
       "address_prefix": "11"
     },
     {
-      "name": "kmsdocuments",
-      "index": "industriProyek",
-      "proto_file": "kmsDocument.proto",
-      "proto_message_name": "KmsDocument",
-      "address_prefix": "22"
-    },
-    {
       "name": "blocks",
       "index": "blockId"
     }
